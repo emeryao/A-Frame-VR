@@ -49,13 +49,18 @@ export class Image {
         for (let i = 0; i < imgs.length; i++) {
             let element = imgs[i];
             element.addEventListener('click', (e) => {
-                console.log(e);
                 sky.setAttribute('src', element.getAttribute('src'));
             });
         }
 
         this.aImageList = document.getElementsByTagName('a-image');
         this.aCursor = document.getElementsByTagName('a-cursor')[0];
+
+        let gamepads: Gamepad[] = navigator.getGamepads();
+        if (gamepads[0]) {
+            document.getElementsByTagName('a-cursor')[0].setAttribute('fuse', 'false');
+        }
+
 
         AndroidFullScreen.immersiveMode(() => { }, () => { });
         screen.lockOrientation('landscape');
