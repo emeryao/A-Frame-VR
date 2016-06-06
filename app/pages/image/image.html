@@ -1,0 +1,30 @@
+<ion-content class="vr-image">
+    <a-scene>
+        <a-assets>
+            <img id="image2" src="img/2.jpg">
+            <img id="image6" src="img/3.jpg">
+            <img id="image9" src="img/9.jpg">
+            <img id="image1" src="img/1.png">
+        </a-assets>
+        <a-sky src="img/2.jpg" rotation="0 -90 0"></a-sky>
+        <a-image src="img/2.jpg" width="8" height="4" position="-1.732 -2 1" scale="0.2 0.2 0.2" rotation="90 -60 0">
+        </a-image>
+        <a-image src="img/3.jpg" width="8" height="4" position="1.732 -2 -1" scale="0.2 0.2 0.2" rotation="-90 -60 0">
+        </a-image>
+        <a-image src="img/9.jpg" width="8" height="4" position="0 -2 -2" scale="0.2 0.2 0.2" rotation="-90 00 0">
+        </a-image>
+        <a-image src="img/1.png" width="8" height="4" position="-1.732 -2 -1" scale="0.2 0.2 0.2" rotation="-90 60 0">
+        </a-image>
+
+        <a-camera look-controls id="camera" position="0 1.8 0">
+            <a-cursor color="#4CC3D9" fuse="false" scale="1 1 1">
+                <a-animation begin="click" easing="ease-in" attribute="scale" fill="forwards" from="0.1 0.1 0.1" to="1 1 1" dur="150"></a-animation>
+                <a-animation begin="fusing" easing="ease-in" attribute="scale" fill="forwards" from="1 1 1" to="0.1 0.1 0.1" dur="1500"></a-animation>
+            </a-cursor>
+        </a-camera>
+
+
+    </a-scene>
+    <script>
+    </script>
+</ion-content>

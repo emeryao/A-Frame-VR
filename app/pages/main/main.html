@@ -1,0 +1,22 @@
+<ion-navbar *navbar favorite>
+  <ion-title>Cupider - VR</ion-title>
+</ion-navbar>
+
+<ion-content padding class="page1">
+  <button block (click)="gotoVR()">
+    VR视频
+  </button>
+  <!--<button block (click)="gotoVR('video/move.mp4')">
+    VR视频-内景
+  </button>
+  <button block (click)="gotoVR('video/outside.mp4')">
+    VR视频-外景
+  </button>-->
+  <button block (click)="gotoImage()">
+    全景图片
+  </button>
+
+  <button block (click)="gotoGame()">
+    Gamepad
+  </button>
+</ion-content>
