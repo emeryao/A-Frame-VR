@@ -11,8 +11,6 @@ export class Image {
 
     private imageList: string[] = ['img/2.jpg', 'img/3.jpg', 'img/9.jpg', 'img/1.png'];
 
-    private aImageList: NodeListOf<any>;
-
     private aCursor: any;
 
     constructor(gamepadSvc: GamepadService) {
@@ -37,7 +35,10 @@ export class Image {
 
         this.gamepadService.onButtonClick.subscribe((data) => {
             if (data == 0) {
-                this.onGamepadButtonClick();
+                this.aCursor.click();
+                if (this.aCursor.components.raycaster.intersectedEl) {
+                    this.aCursor.components.raycaster.intersectedEl.click();
+                }
             }
         });
     }
@@ -53,7 +54,6 @@ export class Image {
             });
         }
 
-        this.aImageList = document.getElementsByTagName('a-image');
         this.aCursor = document.getElementsByTagName('a-cursor')[0];
 
         let gamepads: Gamepad[] = navigator.getGamepads();
@@ -69,16 +69,6 @@ export class Image {
     private onPageDidLeave(): void {
         AndroidFullScreen.showSystemUI(() => { }, () => { });
         screen.unlockOrientation();
-    }
-
-    private onGamepadButtonClick(): void {
-        for (let i = 0; i < this.aImageList.length; i++) {
-            let element = this.aImageList[i];
-            if (element.is('hovered')) {
-                element.click();
-                this.aCursor.click();
-            }
-        }
     }
 
 }
