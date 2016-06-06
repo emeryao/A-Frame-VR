@@ -1,3 +1,4 @@
+import {ApplicationRef} from '@angular/core';
 import {Page} from 'ionic-angular';
 import {GamepadService} from '../../services/gamepad.service';
 
@@ -5,6 +6,7 @@ import {GamepadService} from '../../services/gamepad.service';
     templateUrl: 'build/pages/gamepad/gamepad.html',
 })
 export class GamepadPage {
+    private appRef: ApplicationRef;
 
     private gamepadService: GamepadService;
 
@@ -12,15 +14,18 @@ export class GamepadPage {
 
     private axesMessage: string = '';
 
-    constructor(gamepadSvc: GamepadService) {
+    constructor(appRef: ApplicationRef, gamepadSvc: GamepadService) {
+        this.appRef = appRef;
         this.gamepadService = gamepadSvc;
 
-        this.gamepadService.onButtonClick.subscribe((data) => {
-            this.padMessage = data;
+        this.gamepadService.onButtonClick.subscribe((data: number) => {
+            this.padMessage = data.toString();
+            this.appRef.tick();
         });
 
-        this.gamepadService.onAxes.subscribe((data) => {
-            this.axesMessage = data;
+        this.gamepadService.onAxes.subscribe((data: number[]) => {
+            this.axesMessage = JSON.stringify(data);
+            this.appRef.tick();
         });
     }
 
